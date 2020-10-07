@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cos.springblog2.repository.PostRepository">
+	
+<!-- 	DB의 데이터를 가져와서 뿌리는 작업인데, -->
+<!-- 	dataType과 java dataType은 맞을 수 없으니까 resultType을 java에 맞게 변환시키는게 필요함 -->
+	<select id="findAll" resultType="com.cos.springblog2.model.Post">
+		SELECT id, title, content
+		FROM post
+	</select>
+	
+  
+</mapper>

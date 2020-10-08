@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -77,7 +78,8 @@ public class TestController {
 	@PostMapping("/joinProc")
 	public @ResponseBody String joinProc(User user) {
 		System.out.println("joinProc 실행" + user);
-		User username = userRepository.findByUsername(user);
+		User username = userRepository.findByUsername(user.getUsername());
+		
 		if(username != null) {
 			return Script.back("아이디가 중복되었습니다.");
 			

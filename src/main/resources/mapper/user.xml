@@ -15,4 +15,10 @@
   		WHERE username = #{username} and password = #{password}
   	</select>
   	
+  	<select id="findByUsername" resultType="com.cos.springblog2.model.User">
+  		SELECT *
+  		FROM user
+  		WHERE username = #{username}
+  	</select>
+  	
 </mapper>

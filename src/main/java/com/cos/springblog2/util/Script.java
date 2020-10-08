@@ -32,13 +32,7 @@ public static String href(String uri) {
 	}
 	
 
-	public static String outText(String msg) {
-
-		return 
-			"<script>" + 
-			"alert('" + msg + "');" + 
-			"</script>";
-	}
+	
 	
 	
 	

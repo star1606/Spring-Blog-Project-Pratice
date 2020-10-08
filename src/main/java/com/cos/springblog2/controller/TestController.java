@@ -75,11 +75,19 @@ public class TestController {
 	}
 
 	@PostMapping("/joinProc")
-	public String joinProc(User user) {
+	public @ResponseBody String joinProc(User user) {
 		System.out.println("joinProc 실행" + user);
-		userRepository.save(user);
+		User username = userRepository.findByUsername(user);
+		if(username != null) {
+			return Script.back("아이디가 중복되었습니다.");
+			
+		} else {
+			userRepository.save(user);
+			return Script.href("회원가입이 완료되었습니다.", "/login");
+		}
 
-		return "home";
+
+		
 	}
 
 }

@@ -19,25 +19,28 @@
 	<a class = "btn btn-secondary" href ="javascript:history.back();">뒤로가기</a>
 	<button class="btn btn-secondary" onclick="history.back()">뒤로가기</button>
 	
-	<c:if test="${sessionScope.principal.id == detailDto.boardDto.board.userId}">
+<%-- 	<c:if test="${sessionScope.principal.id == detailDto.boardDto.board.userId}"> --%>
 		<%-- 로그인한사람하고 board id로 직접 쓴사람이 수정할 수 있게 설정--%>
-	<a href="/blog/board?cmd=update&id=${detailDto.boardDto.board.id}" class="btn btn-warning">수정</a>
+	<a href="" class="btn btn-warning">수정</a>
 		
-		<button class="btn btn-danger" onclick="deleteById(${detailDto.boardDto.board.id} )">삭제</button>
+		<button class="btn btn-danger" onclick="">삭제</button>
 		
-	</c:if>
+<%-- 	</c:if> --%>
 	<br />
 	<br />
 	<h6 class="m-2">
-		작성자 : <i>${detailDto.boardDto.username}</i> 조회수 : <i>${detailDto.boardDto.board.readCount}</i>
+		작성자 : ${detailDto.boardDto.username } <i></i> 조회수 : 2<i></i> 작성시간 : ${detailDto.boardDto.createDate } <i></i>
 	</h6>
 	<br />
 	<h3 class="m-2">
-		<b>${detailDto.boardDto.board.title}</b>
+		<b>${detailDto.boardDto.title }</b>
 	</h3>
 	<hr />
 	<div class="form-group">
-		<div class="container p-3 my-3 border">${detailDto.boardDto.board.content}</div>
+		<div class="container p-3 my-3 border">
+			${detailDto.boardDto.content }
+		
+		</div>
 	</div>
 
 	<hr />
@@ -53,29 +56,29 @@
 					<div class="panel-body">
 						<textarea id = "reply__write__form" class="form-control" placeholder="write a comment..." rows="3"></textarea>
 						<br>
-						<button onclick="replyWrite(${detailDto.boardDto.board.id}, ${sessionScope.principal.id })" type="button" class="btn btn-primary pull-right">댓글쓰기</button>
+						<button onclick="replyWrite()" type="button" class="btn btn-primary pull-right">댓글쓰기</button>
 						<div class="clearfix"></div>
 						<hr />
 						<!-- 댓글 리스트 시작-->
 						<ul id="reply__list" class="media-list">
 						
-							<c:forEach var="replyDto" items="${detailDto.replyDtos}">
-								<!-- 댓글 아이템 -->
-								<li id ="reply-${replyDto.reply.id}" class="media">	
-									<img onerror="this.src='/blog/image/userProfile.png'" src="${replyDto.userProfile}" alt="" class="img-circle">		
-									<div class="media-body">
-										<strong class="text-primary">${replyDto.username}</strong>
-										<p>
-											${replyDto.reply.content}
-										</p>
-									</div>
-									<div class= "m-2">									
-										<c:if test= "${replyDto.reply.userId eq sessionScope.principal.id}">
-											<i onclick="replyDelete(${replyDto.reply.id})" style= "cursor=pointer;" class="material-icons i__btn">delete</i>
-										</c:if>
-									</div>
-								</li>
-							</c:forEach>
+<%-- 							<c:forEach var="" items=""> --%>
+<!-- 								댓글 아이템 -->
+<!-- 								<li id ="" class="media">	 -->
+<!-- 									<img onerror="'" src="" alt="" class="img-circle">		 -->
+<!-- 									<div class="media-body"> -->
+<!-- 										<strong class="text-primary"></strong> -->
+<!-- 										<p> -->
+										
+<!-- 										</p> -->
+<!-- 									</div> -->
+<!-- 									<div class= "m-2">									 -->
+<%-- 										<c:if test= "${replyDto.reply.userId eq sessionScope.principal.id}"> --%>
+<!-- 											<i onclick="" style= "cursor=pointer;" class="material-icons i__btn">delete</i> -->
+<%-- 										</c:if> --%>
+<!-- 									</div> -->
+<!-- 								</li> -->
+<%-- 							</c:forEach> --%>
 						</ul>
 						<!-- 댓글 리스트 끝-->
 					</div>

@@ -8,9 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cos.springblog2.dto.BoardResponseDto;
+import com.cos.springblog2.dto.DetailResponseDto;
 import com.cos.springblog2.model.Post;
 import com.cos.springblog2.model.User;
 import com.cos.springblog2.repository.PostRepository;
@@ -92,4 +95,26 @@ public class TestController {
 		
 	}
 
+	
+	// Detail Page
+	@GetMapping("/detail/{id}")
+	public String detailPage(@PathVariable int id, Model model) {
+	BoardResponseDto boardDto = postRepository.findById(id);
+		
+		System.out.println(boardDto);
+		
+		DetailResponseDto detailDto = DetailResponseDto.builder()
+				.boardDto(boardDto)
+				.build();
+	
+		System.out.println(detailDto);
+		
+		model.addAttribute("detailDto", detailDto);
+	
+//		model.addAttribute("detailDto", )
+		return "board/detail";
+	}
+	
+	
+	
 }

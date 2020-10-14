@@ -121,6 +121,32 @@ public class TestController {
 		return "board/detail";
 	}
 	
+	// 글쓰기 페이지
+	@GetMapping("/write")
+	public String writePage() {
+		
+		return "board/write";
+	}
 	
+	
+	@PostMapping("/writeProc")
+	public String write(Post post, HttpSession session){
+		
+		// 저장했던 세션 값을 가져옴
+		User principal = (User)session.getAttribute("principal");
+		
+		System.out.println(principal);
+		
+		Post postRequest = Post.builder()
+				
+				.userId(principal.getId())
+				.title(post.getTitle())
+				.content(post.getContent())
+				.build();
+		
+		postRepository.save(postRequest);
+		
+		return "redirect:/";
+	}
 	
 }

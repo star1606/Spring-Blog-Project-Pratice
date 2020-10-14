@@ -17,8 +17,14 @@
 		FROM post p INNER JOIN user u
 		ON p.userId = u.id
 		WHERE p.id LIKE #{id}
-		
 	</select>
+	
+	<!--userId는 자동으로 저장되는 것이 아니니까 알아서 설정해서 저장시켜줘야됨 -->
+	<insert id="save">
+		INSERT INTO post(userId ,title, content)
+		VALUES (#{userId}, #{title}, #{content})
+	</insert>
+	
 	
 </mapper>
 

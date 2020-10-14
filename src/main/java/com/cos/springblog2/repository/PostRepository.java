@@ -11,4 +11,5 @@ public interface PostRepository {
 	public List<Post> findAll();
 	
 	public BoardResponseDto findById(int id);
+	public void save(Post post);
 }

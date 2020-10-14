@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.springblog2.dto.BoardResponseDto;
 import com.cos.springblog2.dto.DetailResponseDto;
+import com.cos.springblog2.dto.ReplyResponseDto;
 import com.cos.springblog2.model.Post;
 import com.cos.springblog2.model.User;
+import com.cos.springblog2.repository.CommentRepository;
 import com.cos.springblog2.repository.PostRepository;
 import com.cos.springblog2.repository.UserRepository;
 import com.cos.springblog2.util.Script;
@@ -28,6 +30,7 @@ public class TestController {
 
 	private final PostRepository postRepository;
 	private final UserRepository userRepository;
+	private final CommentRepository commentRepository;
 
 	// dashboard
 	@GetMapping({ "/", "" })
@@ -100,11 +103,14 @@ public class TestController {
 	@GetMapping("/detail/{id}")
 	public String detailPage(@PathVariable int id, Model model) {
 	BoardResponseDto boardDto = postRepository.findById(id);
-		
 		System.out.println(boardDto);
 		
+	List<ReplyResponseDto> replyDtos = commentRepository.findAll(id);	// postId를 받는다
+	System.out.println(replyDtos);	
+	
 		DetailResponseDto detailDto = DetailResponseDto.builder()
 				.boardDto(boardDto)
+				.replyDtos(replyDtos)
 				.build();
 	
 		System.out.println(detailDto);

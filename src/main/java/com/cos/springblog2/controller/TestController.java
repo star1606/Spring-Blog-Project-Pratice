@@ -149,4 +149,8 @@ public class TestController {
 		return "redirect:/";
 	}
 	
+	// 글 수정페이지, 글수정 로직
+	
+	
+	
 }

@@ -16,13 +16,14 @@ import lombok.NoArgsConstructor;
 public class BoardResponseDto {
 
 	// Post
-	private Post board;
 	
-	private int id;
-	private int userId;
-	private String title;
-	private String content;
-	private Timestamp createDate;
+
+	private Post board;
+//	private int id;
+//	private int userId;
+//	private String title;
+//	private String content;
+//	private Timestamp createDate;
 	
 	private String username;
 	

@@ -103,8 +103,32 @@ public class TestController {
 	// Detail Page
 	@GetMapping("/detail/{id}")
 	public String detailPage(@PathVariable int id, Model model) {
-	BoardResponseDto boardDto = postRepository.findById(id);
-		System.out.println(boardDto);
+	
+	
+		// findById로 데이터를 가져오지만 SQL은 객체 저장이라는 개념이 없기 때문에
+		// board 를 저장이 제대로 안되고 null로 저장됨
+		BoardResponseDto boardDto = postRepository.findById(id);
+		System.out.println("boardDto는" +boardDto);
+		// Post board = postRepository.findById(id);
+		// board를 찾는 메소드가 필요함.
+		// boardDto = BoardResponseDto.builder()
+		// .board(board)
+		// .build();
+		// board 객체를 가져오려면 findAll 한 개 더 해야함
+	
+//		Post board = Post.builder()
+//				.id(model.get)
+//				.title(boardDto.getBoard().getTitle())
+//				.content(boardDto.getBoard().getContent())
+//				.createDate(boardDto.get)
+//				.build();
+		
+	//	boardDto.setBoard(board);
+		
+		// 스프링에서 빌더 사용하는 방법 데이터 가져오는법
+		
+		//System.out.println("board는" + board);
+		System.out.println("build후" +boardDto);
 		
 	List<ReplyResponseDto> replyDtos = commentRepository.findAll(id);	// postId를 받는다
 	System.out.println(replyDtos);	
@@ -114,7 +138,7 @@ public class TestController {
 				.replyDtos(replyDtos)
 				.build();
 	
-		System.out.println(detailDto);
+		System.out.println("deatil 페이지 detailDto" + detailDto);
 		
 		model.addAttribute("detailDto", detailDto);
 	
@@ -169,8 +193,10 @@ public class TestController {
 	
 	// 글 수정페이지, 글수정 로직
 	@GetMapping("/update/{id}")
-	public String updatePage() {
-		return "";
+	public String updatePage(@PathVariable int id, Model model) {
+		BoardResponseDto boardDto = postRepository.findById(id);
+		model.addAttribute("boardDto", boardDto);
+		return "board/update";
 		
 	}
 	

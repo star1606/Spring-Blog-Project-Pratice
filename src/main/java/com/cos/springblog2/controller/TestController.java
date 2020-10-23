@@ -154,21 +154,25 @@ public class TestController {
 	// 글삭제
 	@DeleteMapping("/delete") 
 	public @ResponseBody String delete(int id) {
-		
+		// s
 		int result = postRepository.deleteById(id);
 		System.out.println("result값" + result);
+		if(result == 1) {
+			return "1";
+		} else {
+			return "0";
+		}
 		
-		return "삭제 성공";
 	}
 	
 	
 	
 	// 글 수정페이지, 글수정 로직
-//	@GetMapping("/update/{id}")
-//	public String updatePage() {
-//		return "";
-//		
-//	}
+	@GetMapping("/update/{id}")
+	public String updatePage() {
+		return "";
+		
+	}
 	
 	
 }

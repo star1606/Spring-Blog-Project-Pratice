@@ -18,7 +18,7 @@ function deleteById(id) {
 		
 		
 	}).done(function(resp){
-		console.log(resp);
+		console.log(1, resp);
 	
 		
 		// 이거 작동이 안되는데

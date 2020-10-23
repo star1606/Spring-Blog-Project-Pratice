@@ -150,7 +150,11 @@ public class TestController {
 	}
 	
 	// 글 수정페이지, 글수정 로직
-	
+	@GetMapping("/update")
+	public String updatePage() {
+		return "";
+		
+	}
 	
 	
 }

@@ -15,10 +15,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class BoardResponseDto {
 
-	// Post
-	
-
 	private Post board;
+	
+	// Post
 //	private int id;
 //	private int userId;
 //	private String title;

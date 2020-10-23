@@ -21,7 +21,7 @@
 	
 	<c:if test="${sessionScope.principal.id == detailDto.boardDto.board.userId}">
 		<%-- 로그인한사람하고 board id로 직접 쓴사람이 수정할 수 있게 설정--%>
-	<a href="/update/${detailDto.boardDto.id}" class="btn btn-warning">수정</a>
+	<a href="/update/${detailDto.boardDto.board.id}" class="btn btn-warning">수정</a>
 		
 		<button class="btn btn-danger" onclick="deleteById(${detailDto.boardDto.board.id})">삭제</button>
 		
@@ -29,7 +29,7 @@
 	<br />
 	<br />
 	<h6 class="m-2">
-		작성자 : ${detailDto.boardDto.board.username } <i></i> 조회수 : 2<i></i> 작성시간 : ${detailDto.boardDto.board.createDate } <i></i>
+		작성자 : ${detailDto.boardDto.username } <i></i> 조회수 : 2<i></i> 작성시간 : ${detailDto.boardDto.board.createDate } <i></i>
 	</h6>
 	<br />
 	<h3 class="m-2">
@@ -62,7 +62,7 @@
 						<!-- 댓글 리스트 시작-->
 						<ul id="reply__list" class="media-list">
 						
-							<c:forEach var="replyDto" items="${detailDto.replyDtos }">
+<%-- 							<c:forEach var="replyDto" items="${detailDto.replyDtos }"> --%>
 						<!-- 댓글 아이템 -->
 <%-- 								<li id ="reply-${replyDto.id }" class="media">	 --%>
 <!-- 									<img onerror="'" src="" alt="" class="img-circle">		 -->
@@ -81,7 +81,7 @@
 <%-- 										</c:if> --%>
 <!-- 									</div> -->
 <!-- 								</li> -->
-							</c:forEach>
+<%-- 							</c:forEach> --%>
 						</ul>
 						<!-- 댓글 리스트 끝-->
 					</div>

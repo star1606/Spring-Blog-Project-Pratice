@@ -18,7 +18,12 @@
 		ON p.userId = u.id
 		WHERE p.id LIKE #{id}
 	</select>
-	
+	<!--board 객체를 만들기 위한 SQL 쿼리문 -->
+	<select id = "findbyIdForPost" resultType="com.cos.springblog2.model.Post">
+		SELECT id, title, content, userId, createDate
+		FROM post
+		WHERE id = #{id}
+	</select>
 	<!--userId는 자동으로 저장되는 것이 아니니까 알아서 설정해서 저장시켜줘야됨 -->
 	<insert id="save">
 		INSERT INTO post(userId ,title, content)

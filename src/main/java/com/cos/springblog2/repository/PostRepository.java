@@ -2,7 +2,6 @@ package com.cos.springblog2.repository;
 
 import java.util.List;
 
-
 import com.cos.springblog2.dto.BoardResponseDto;
 import com.cos.springblog2.model.Post;
 
@@ -16,4 +15,5 @@ public interface PostRepository {
 	
 	public int deleteById(int id);
 	
+	public Post findbyIdForPost(int id);
 }

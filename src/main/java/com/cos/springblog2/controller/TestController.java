@@ -106,32 +106,20 @@ public class TestController {
 	
 	
 		// findById로 데이터를 가져오지만 SQL은 객체 저장이라는 개념이 없기 때문에
-		// board 를 저장이 제대로 안되고 null로 저장됨
+		// board가 저장이 제대로 안되고 null로 저장됨
 		BoardResponseDto boardDto = postRepository.findById(id);
 		System.out.println("boardDto는" +boardDto);
-		// Post board = postRepository.findById(id);
-		// board를 찾는 메소드가 필요함.
-		// boardDto = BoardResponseDto.builder()
-		// .board(board)
-		// .build();
-		// board 객체를 가져오려면 findAll 한 개 더 해야함
-	
-//		Post board = Post.builder()
-//				.id(model.get)
-//				.title(boardDto.getBoard().getTitle())
-//				.content(boardDto.getBoard().getContent())
-//				.createDate(boardDto.get)
-//				.build();
+		System.out.println("getBoard 가져오기" + boardDto.getBoard());
+		System.out.println("username 가져오기" + boardDto.getUsername());
 		
-	//	boardDto.setBoard(board);
+		// 그래서 board 객체를 sql쿼리로 가져와서 구해야됨
+		Post board = postRepository.findbyIdForPost(id);
+		boardDto.setBoard(board);
 		
-		// 스프링에서 빌더 사용하는 방법 데이터 가져오는법
-		
-		//System.out.println("board는" + board);
 		System.out.println("build후" +boardDto);
 		
-	List<ReplyResponseDto> replyDtos = commentRepository.findAll(id);	// postId를 받는다
-	System.out.println(replyDtos);	
+		List<ReplyResponseDto> replyDtos = commentRepository.findAll(id);	// postId를 받는다
+		System.out.println(replyDtos);	
 	
 		DetailResponseDto detailDto = DetailResponseDto.builder()
 				.boardDto(boardDto)
@@ -141,8 +129,7 @@ public class TestController {
 		System.out.println("deatil 페이지 detailDto" + detailDto);
 		
 		model.addAttribute("detailDto", detailDto);
-	
-//		model.addAttribute("detailDto", )
+
 		return "board/detail";
 	}
 	
@@ -194,7 +181,12 @@ public class TestController {
 	// 글 수정페이지, 글수정 로직
 	@GetMapping("/update/{id}")
 	public String updatePage(@PathVariable int id, Model model) {
+		System.out.println("감??");
 		BoardResponseDto boardDto = postRepository.findById(id);
+		System.out.println("get Id 찾기 :" + boardDto.getBoard());
+		Post board = postRepository.findbyIdForPost(id);
+		boardDto.setBoard(board);
+		System.out.println("update임: " + boardDto);
 		model.addAttribute("boardDto", boardDto);
 		return "board/update";
 		

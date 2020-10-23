@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ObjectUtils;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -149,12 +150,25 @@ public class TestController {
 		return "redirect:/";
 	}
 	
-	// 글 수정페이지, 글수정 로직
-	@GetMapping("/update")
-	public String updatePage() {
-		return "";
+	
+	// 글삭제
+	@DeleteMapping("/delete") 
+	public @ResponseBody String delete(int id) {
 		
+		int result = postRepository.deleteById(id);
+		System.out.println("result값" + result);
+		
+		return "삭제 성공";
 	}
+	
+	
+	
+	// 글 수정페이지, 글수정 로직
+//	@GetMapping("/update/{id}")
+//	public String updatePage() {
+//		return "";
+//		
+//	}
 	
 	
 }

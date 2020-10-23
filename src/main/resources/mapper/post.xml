@@ -25,6 +25,11 @@
 		VALUES (#{userId}, #{title}, #{content})
 	</insert>
 	
+	<delete id="deleteById">
+		DELETE FROM post
+		WHERE id = #{id}
+	</delete>
+	
 	
 </mapper>
 

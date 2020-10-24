@@ -10,8 +10,10 @@
 
 
 
-<div class= "container">	<!-- get 하면 body에 데이터 못들고감 -->
-	<form action="/updateProc" method="POST">
+<div class= "container">
+	<!--<form action="/updateProc" method="POST"> 이건 폼전송-->
+	<!-- AJAX전송 -->
+	<form id="updateFrm"> 
 		<input type = "hidden" value ="${boardDto.board.id }" name ="id"/>
 		
 		<div class="form-group">
@@ -27,8 +29,11 @@
 		</div>
 						
 			<!-- </div> 네임이 없으면 전송을 못한다 .text() , val, html -->
-		<button type="submit" class="btn btn-primary">수정하기</button>		
+			
+	<!-- <button type="submit" class="btn btn-primary">수정하기</button>	 -->
+	<!--JS update 메소드를 실행할 때 매개변수로 데이터를 가져와야 되는거 아닌가	 꼭필요없다-->
 	</form>
+		<button type="button" onclick="update(${boardDto.board.id})" class="btn btn-primary">수정하기</button>		
 </div>
 
 	<script>
@@ -46,7 +51,7 @@
 
 
 
+<script src ="/js/update.js"></script>
 
 
-
-	<%@ include file="../include/footer.jsp"%>
+<%@ include file="../include/footer.jsp"%>

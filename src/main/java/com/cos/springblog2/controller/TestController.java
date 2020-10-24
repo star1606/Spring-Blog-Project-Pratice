@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.springblog2.dto.BoardResponseDto;
@@ -193,15 +194,16 @@ public class TestController {
 	}
 	
 	// 글수정 update 
-	@PostMapping("/updateProc")
+	@PutMapping("/updateProc")
 	public @ResponseBody String update(Post post) {
 		int result = postRepository.update(post);
+		System.out.println("update메소드 result: " + result);
 		if(result == 1) {
 			
-			return Script.href("글 수정 성공", "/");
+			return "1";
 			
 		} else {
-			return Script.back("글수정 실패");
+			return "0";
 		}
 		
 		

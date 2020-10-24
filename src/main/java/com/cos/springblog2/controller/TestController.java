@@ -192,5 +192,23 @@ public class TestController {
 		
 	}
 	
+	// 글수정 update 
+	@PostMapping("/updateProc")
+	public @ResponseBody String update(Post post) {
+		int result = postRepository.update(post);
+		if(result == 1) {
+			
+			return Script.href("글 수정 성공", "/");
+			
+		} else {
+			return Script.back("글수정 실패");
+		}
+		
+		
+		
+		
+	}
+	
+	
 	
 }

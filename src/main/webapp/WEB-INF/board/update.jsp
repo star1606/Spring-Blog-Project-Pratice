@@ -11,7 +11,7 @@
 
 
 <div class= "container">	<!-- get 하면 body에 데이터 못들고감 -->
-	<form action="" method="POST">
+	<form action="/updateProc" method="POST">
 		<input type = "hidden" value ="${boardDto.board.id }" name ="id"/>
 		
 		<div class="form-group">

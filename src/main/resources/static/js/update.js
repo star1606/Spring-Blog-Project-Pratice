@@ -1,22 +1,23 @@
 // ajax update 로직 정리할 것.
+
+
+let validation = null;
+
 function update(id) {
 
 	let data = $("#updateFrm").serialize();
 	console.log("frm serialize하면 값이 원하는데로 나오나? : " + data);
-	
-	
-	let title = $("#title").val();
-	let content = $("#content").val();
-	console.log("title", title)
-	console.log("content", content)
-	
-	if(title == null || title == "") {
-		alert("제목을 입력하세요.");
-		return;
-	} else if(content == null || content == "") {
-		alert("내용을 입력하세요.");	
+
+	validation = true;
+	validate();
+		
+	console.log("validation 값", validation);
+	if(validation == false) {
+		alert("문제있음");
 		return;
 	}
+	
+	
 
 	$.ajax({
 		type : "PUT",
@@ -38,18 +39,26 @@ function update(id) {
 	}).fail(function(error) {
 		alert("서버 문제");
 	});
-	
-	
-	function validate() {
-		
-//		return console.log("validate 이상무");
-	
-	}
-	
-	
-	
-	
-	
-	
 
 }
+
+////////////////////////
+
+function validate() {
+
+	let title = $("#title").val();
+	let content = $("#content").val();
+	console.log("title", title)
+	console.log("content", content)
+
+	if (title == null || title == "") {
+		alert("제목을 입력하세요.");
+		validation = false;
+		return;
+	} else if (content == null || content == "") {
+		alert("내용을 입력하세요.");
+		validation = false;
+		return;
+	}
+		return;
+}	

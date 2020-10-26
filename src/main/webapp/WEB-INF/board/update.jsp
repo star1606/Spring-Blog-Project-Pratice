@@ -23,7 +23,7 @@
 	
 		<div class="form-group">
 			<label for="content">Content:</label>
-			<textarea id="summernote" class="form-control" rows="5" id="content" name="content">
+			<textarea id="content" class="form-control" rows="5"  name="content">
 				${boardDto.board.content }
 			</textarea>
 		</div>
@@ -32,8 +32,9 @@
 			
 	<!-- <button type="submit" class="btn btn-primary">수정하기</button>	 -->
 	<!--JS update 메소드를 실행할 때 매개변수로 데이터를 가져와야 되는거 아닌가	 꼭필요없다-->
+		<button type="submit" onclick="update(${boardDto.board.id})" class="btn btn-primary">수정하기</button>		
+	<!-- validation 체크를 하고나서 update를 하려면 onclick을 쓰면 안됨 -->
 	</form>
-		<button type="button" onclick="update(${boardDto.board.id})" class="btn btn-primary">수정하기</button>		
 </div>
 
 	<script>
@@ -44,7 +45,7 @@
 				tabsize : 2,
 				height : 100
 			});
-		});
+		});	
 	</script>
 
 

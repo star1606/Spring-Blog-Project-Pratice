@@ -62,26 +62,26 @@
 						<!-- 댓글 리스트 시작-->
 						<ul id="reply__list" class="media-list">
 						
-<%-- 							<c:forEach var="replyDto" items="${detailDto.replyDtos }"> --%>
-						<!-- 댓글 아이템 -->
-<%-- 								<li id ="reply-${replyDto.id }" class="media">	 --%>
-<!-- 									<img onerror="'" src="" alt="" class="img-circle">		 -->
-<!-- 									<div class="media-body"> -->
-<%-- 										<strong class="text-primary">${replyDto.username }</strong> --%>
-<!-- 										<p> -->
-<%-- 											${replyDto.content } --%>
-<!-- 										</p> -->
-<!-- 									</div> -->
-<!-- 									<div> -->
-<%-- 										${replyDto.createDate } --%>
-<!-- 									</div> -->
-<!-- 									<div class= "m-2">									 -->
-<%-- 										<c:if test= "${replyDto.userId eq sessionScope.principal.id}"> --%>
-<!-- 											<i onclick="" style= "cursor=pointer;" class="material-icons i__btn">delete</i> -->
-<%-- 										</c:if> --%>
-<!-- 									</div> -->
-<!-- 								</li> -->
-<%-- 							</c:forEach> --%>
+							<c:forEach var="replyDto" items="${detailDto.replyDtos }">
+						댓글 아이템
+								<li id ="reply-${replyDto.id }" class="media">	
+									<img onerror="'" src="" alt="" class="img-circle">		
+									<div class="media-body">
+										<strong class="text-primary">${replyDto.username }</strong>
+										<p>
+											${replyDto.content }
+										</p>
+									</div>
+									<div>
+										${replyDto.createDate }
+									</div>
+									<div class= "m-2">									
+										<c:if test= "${replyDto.userId eq sessionScope.principal.id}">
+											<i onclick="" style= "cursor=pointer;" class="material-icons i__btn">delete</i>
+										</c:if>
+									</div>
+								</li>
+							</c:forEach>
 						</ul>
 						<!-- 댓글 리스트 끝-->
 					</div>

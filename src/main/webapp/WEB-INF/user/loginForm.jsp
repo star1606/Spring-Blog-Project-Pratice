@@ -12,7 +12,7 @@
 %>
 <div class = "container">
 	
-<form action="/loginProc" method="POST" class="was-validated">
+<form action="/loginProc" method="POST" onsubmit="return validate()" class="was-validated" >
   <div class="form-group">
     <label for="username">Username:</label>
     <input type="text" value = "${cookie.remember.value}" class="form-control" id="username" placeholder="Enter username" name="username" required>
@@ -56,5 +56,26 @@
 	
 <!--  체크박스에 체크를 누르면 쿠키가 저장되고  -->
 <!--   -->
+
+
+<script>
+	function validate() {
+		// 값을 어떻게 들고 올까? 제이쿼리로해서 id 선택자를 써서 가져온다
+		let username = $("#username").val();
+		let password = $("#password").val();
+		
+		if(username == "" || username == null) {
+			alert("아이디를 입력하세요");
+			return false;
+			
+		} else if (password == "" || password == null) {	
+			alert("비밀번호를 입력하세요");
+			return false;
+		}
+			return true;
+		
+	}
+
+</script>
 
 <%@ include file = "../include/footer.jsp" %>
